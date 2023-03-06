@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: why-kubernetes
+  namespace: suxess-it-admin
+spec:
+  destination:
+    namespace: suxess-it-dev
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: kubernetes
+    repoURL: https://github.com/jkleinlercher/suxess-why-why-why
+    targetRevision: HEAD
