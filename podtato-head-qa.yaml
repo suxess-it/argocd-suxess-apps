@@ -12,3 +12,6 @@ spec:
     path: .
     repoURL: https://github.com/jkleinlercher/gitops-helm-branch
     targetRevision: qa
+    helm:
+      valueFiles:
+      - values-qa.yaml

@@ -12,3 +12,6 @@ spec:
     path: .
     repoURL: https://github.com/jkleinlercher/gitops-helm-branch
     targetRevision: prod
+    helm:
+      valueFiles:
+      - values-prod.yaml
