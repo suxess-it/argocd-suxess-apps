@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: k-podtato-head-prod
+  namespace: suxess-it-admin
+spec:
+  destination:
+    namespace: suxess-it-prod
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    repoURL: 'https://github.com/jkleinlercher/gitops-kustomize-folder'
+    path: envs/prod
+    targetRevision: HEAD
+    kustomize:
+      namePrefix: k-podtato-head-prod-
