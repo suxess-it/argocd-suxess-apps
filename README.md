@@ -1,3 +1,3 @@
-# suxess-apps-axians-mcp
+# suxess-apps
 
-das repo wo wir deklarativ unsere apps im axians mcp definieren
+das repo wo wir deklarativ unsere apps über argocd deployen
