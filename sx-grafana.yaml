@@ -5,7 +5,7 @@ metadata:
   namespace: suxess-it-admin
 spec:
   destination:
-    namespace: sx-grafana
+    namespace: suxess-it-grafana
     server: https://kubernetes.default.svc
   project: default
   source:
