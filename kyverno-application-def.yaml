@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kyverno
+  namespace: argocd
+spec:
+  destination:
+    name: ''
+    namespace: sx-kyverno
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: ''
+    repoURL: 'https://kyverno.github.io/kyverno/'
+    targetRevision: 3.0.4
+    chart: kyverno
+    helm:
+      parameters:
+        - name: admissionController.replicas
+          value: '3'
+        - name: backgroundController.replicas
+          value: '2'
+        - name: cleanupController.replicas
+          value: '2'
+        - name: reportsController.replicas
+          value: '2'
+        - name: securityContext
+          value: null
+  sources: []
+  project: default
+  syncPolicy:
+    syncOptions:
+      - Replace=true
