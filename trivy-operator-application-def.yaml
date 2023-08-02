@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: trivy-operator
+  namespace: suxess-it-admin
+spec:
+  destination:
+    namespace: sx-trivy-system
+    server: 'https://kubernetes.default.svc'
+  source:
+    repoURL: 'https://aquasecurity.github.io/helm-charts/'
+    targetRevision: 0.15.1
+    chart: trivy-operator
+    helm:
+      values: |
+        operator.metricsVulnIdEnabled: true
+        serviceMonitor.enabled: true
+        trivyOperator.reportResourceLabels: "backstage.io/kubernetes-id"
+        trivy.ignoreUnfixed: true
+        trivy.timeout: "10m0s"
+  sources: []
+  project: default
