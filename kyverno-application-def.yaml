@@ -14,17 +14,26 @@ spec:
     targetRevision: 3.0.4
     chart: kyverno
     helm:
-      parameters:
-        - name: admissionController.replicas
-          value: '3'
-        - name: backgroundController.replicas
-          value: '2'
-        - name: cleanupController.replicas
-          value: '2'
-        - name: reportsController.replicas
-          value: '2'
-        - name: securityContext
-          value: null
+      values: |
+        admissionController.replicas: 3
+        backgroundController.replicas: 2
+        cleanupController.replicas: 2
+        reportsController.replicas: 2
+        admissionController.container.securityContext: null
+        admissionController.initContainer.securityContext: null
+        config:
+          webhooks:
+            - namespaceSelector:
+                matchExpressions:
+                        - key: kubernetes.io/metadata.name
+                          operator: NotIn
+                          values:
+                            - sx-kyverno
+                        - key: openshift.io/run-level
+                          operator: NotIn
+                          values:
+                            - 0
+                            - 1
   sources: []
   project: default
   syncPolicy:
