@@ -28,7 +28,7 @@ spec:
                         - key: kubernetes.io/metadata.name
                           operator: NotIn
                           values:
-                            - sx-kyverno
+                            - suxess-it-kyverno
                         - key: openshift.io/run-level
                           operator: NotIn
                           values:
