@@ -5,7 +5,7 @@ metadata:
   namespace: suxess-it-admin
 spec:
   destination:
-    namespace: sx-trivy-system
+    namespace: suxess-it-trivy-system
     server: 'https://kubernetes.default.svc'
   source:
     repoURL: 'https://aquasecurity.github.io/helm-charts/'
