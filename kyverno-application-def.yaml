@@ -23,6 +23,10 @@ spec:
             securityContext: null
           serviceMonitor:
             enabled: true
+          container:
+            resources:
+              limits:
+                memory: 1Gi
         backgroundController:
           replicas: 1
           serviceMonitor:
