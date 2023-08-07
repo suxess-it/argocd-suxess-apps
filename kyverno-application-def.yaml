@@ -32,8 +32,8 @@ spec:
                         - key: openshift.io/run-level
                           operator: NotIn
                           values:
-                            - 0
-                            - 1
+                            - "0"
+                            - "1"
   sources: []
   project: default
   syncPolicy:
