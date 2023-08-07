@@ -21,6 +21,10 @@ spec:
         reportsController.replicas: 2
         admissionController.container.securityContext: null
         admissionController.initContainer.securityContext: null
+        admissionController.serviceMonitor.enabled: true
+        backgroundController.serviceMonitor.enabled: true
+        cleanupController.serviceMonitor.enabled: true
+        reportsController.serviceMonitor.enabled: true
         config:
           webhooks:
             - namespaceSelector:
