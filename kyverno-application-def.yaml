@@ -15,18 +15,29 @@ spec:
     chart: kyverno
     helm:
       values: |
-        admissionController.replicas: 3
-        backgroundController.replicas: 2
-        cleanupController.replicas: 2
-        reportsController.replicas: 2
-        admissionController.container.securityContext: null
-        admissionController.initContainer.securityContext: null
-        admissionController.serviceMonitor.enabled: true
-        backgroundController.serviceMonitor.enabled: true
-        cleanupController.serviceMonitor.enabled: true
-        reportsController.serviceMonitor.enabled: true
-        reportsController.resources.limits:
-          memory: 256Mi
+        admissionController:
+          replicas: 3
+          container:
+            securityContext: null
+          initContainer:
+            securityContext: null
+          serviceMonitor:
+            enabled: true
+        backgroundController:
+          replicas: 2
+          serviceMonitor:
+            enabled: true
+        cleanupController:
+          replicas: 2
+          serviceMonitor:
+            enabled: true
+        reportsController:
+          replicas: 2
+          serviceMonitor:
+            enabled: true
+          resources:
+            limits:
+              memory: 256Mi
         config:
           webhooks:
             - namespaceSelector:
