@@ -13,10 +13,14 @@ spec:
     chart: trivy-operator
     helm:
       values: |
-        operator.metricsVulnIdEnabled: true
-        serviceMonitor.enabled: true
-        trivyOperator.reportResourceLabels: "backstage.io/kubernetes-id"
-        trivy.ignoreUnfixed: true
-        trivy.timeout: "10m0s"
+        operator:
+          metricsVulnIdEnabled: true
+        serviceMonitor:
+          enabled: true
+        trivyOperator:
+          reportResourceLabels: "backstage.io/kubernetes-id"
+        trivy:
+          ignoreUnfixed: true
+          timeout: "10m0s"
   sources: []
   project: default
