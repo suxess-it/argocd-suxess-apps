@@ -25,6 +25,8 @@ spec:
         backgroundController.serviceMonitor.enabled: true
         cleanupController.serviceMonitor.enabled: true
         reportsController.serviceMonitor.enabled: true
+        reportsController.resources.limits:
+          memory: 256Mi
         config:
           webhooks:
             - namespaceSelector:
