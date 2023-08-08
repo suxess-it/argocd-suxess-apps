@@ -40,7 +40,7 @@ spec:
             enabled: true
           resources:
             limits:
-              memory: 256Mi
+              memory: 512Mi
         config:
           webhooks:
             - namespaceSelector:
