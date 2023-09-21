@@ -22,5 +22,6 @@ spec:
         trivy:
           ignoreUnfixed: true
           timeout: "10m0s"
+        targetNamespaces: "suxess-it-dev"
   sources: []
   project: default
