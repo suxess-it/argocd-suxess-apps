@@ -3,12 +3,20 @@ kind: Application
 metadata:
   name: sx-grafana
   namespace: suxess-it-admin
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
-  destination:
-    namespace: suxess-it-grafana
-    server: https://kubernetes.default.svc
   project: default
   source:
     path: .
     repoURL: https://github.com/suxess-it/sx-grafana
     targetRevision: HEAD
+  destination:
+    namespace: suxess-it-grafana
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

@@ -3,11 +3,10 @@ kind: Application
 metadata:
   name: kyverno
   namespace: suxess-it-admin
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
-  destination:
-    name: ''
-    namespace: suxess-it-kyverno
-    server: 'https://kubernetes.default.svc'
+  project: default
   source:
     path: ''
     repoURL: 'https://kyverno.github.io/kyverno/'
@@ -54,8 +53,13 @@ spec:
                           values:
                             - "0"
                             - "1"
-  sources: []
-  project: default
+  destination:
+    namespace: suxess-it-kyverno
+    server: 'https://kubernetes.default.svc'
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
-      - Replace=true
+    - CreateNamespace=true
+    - Replace=true

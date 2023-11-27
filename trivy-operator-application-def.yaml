@@ -4,9 +4,7 @@ metadata:
   name: trivy-operator
   namespace: suxess-it-admin
 spec:
-  destination:
-    namespace: suxess-it-trivy
-    server: 'https://kubernetes.default.svc'
+  project: default
   source:
     repoURL: 'https://aquasecurity.github.io/helm-charts/'
     targetRevision: 0.15.1
@@ -23,5 +21,12 @@ spec:
           ignoreUnfixed: true
           timeout: "10m0s"
         targetNamespaces: "suxess-it-dev"
-  sources: []
-  project: default
+  destination:
+    namespace: suxess-it-trivy
+    server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
