@@ -50,6 +50,10 @@ spec:
 
 3. Wenn man nur AppDef hat und kein eigenes gitops-Repo, dann gibts auch keine catalog-info.yaml und docs für die unterschiedlichen AppDefs
 
+4. sx- Prefix bei Appnamen? notwendig oder nicht?
+
+5. pro app ein eigenes gitops-Repo oder alles in https://github.com/suxess-it/charts ?
+
 
 ## Applikationen deaktivieren
 
