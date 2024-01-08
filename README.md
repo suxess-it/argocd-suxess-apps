@@ -15,12 +15,14 @@ Will man eine Applikation in mehreren Stages deployen, muss man dafür getrennte
 Aktuell wird für jede Applikation ein eigenes Application-Definition-YAML angelegt. ApplicationSets werden noch nicht verwendet weil wir noch keinen generischen Ansatz wissen, der für alle unsere Applikationen passt.
 In weiterer Folge könnte es sein dass wir ApplicationSets einführen, sobald wir wissen wie so eine generische Application-Definition aussehen könnte.
 
+Es zeichnet sich ab, dass alle unsere Plattform-Apps unter https://github.com/suxess-it/charts definiert werden. Vlt können wir hier in Zukunft mit ApplicationSets arbeiten.
+
 ### Helm-Charts
-
-
 
 ### Values-Files
 
+aktuell haben alle Apps in ihren Directories unter https://github.com/suxess-it/charts ein eigenes values.yaml . Dadurch dass wir aktuell kein Staging haben, reicht dieses eine values.yaml aus.
+Wichtig ist, dass keine values in den App-Definitions angegeben werden, sondern immer direkt in den values-Files bei der Applikation selbst (im https://github.com/suxess-it/charts).
 
 ### Wichtige Defaults
 
@@ -42,17 +44,13 @@ spec:
     - CreateNamespace=true
 ```
 
-### Offene Fragen
+### Konventionen
 
-1. Helm-Chart-Versionen direkt in AppDef angeben --> dann muss immer Parent-App gesynct werden wenn man neues Helm-Chart in App verwenden will
-
-2. Values direkt in AppDef angeben --> dann muss immer Parent-App gesynct werden wenn man neues Helm-Chart in App verwenden will
-
-3. Wenn man nur AppDef hat und kein eigenes gitops-Repo, dann gibts auch keine catalog-info.yaml und docs für die unterschiedlichen AppDefs
+1. Es wrden keine Helm-Chart-Versionen oder Values direkt in AppDef angeben, die AppDef dienen also nur zum erstmaligen Onboarding der Apps, aber sollen in der laufenden Weiterentwicklung nicht ständig verändert werden müssen. Das hat den Vorteil dass Veränderungen dann nur in den App-Repos selbst stattfindet aber nicht in der Parent-App. D.h. auch 3rd-Party-Helm-Charts werden entweder nach https://github.com/suxess-it/charts geklont oder über ein Umbrella-Chart eingebunden.
 
 4. sx- Prefix bei Appnamen? notwendig oder nicht?
 
-5. pro app ein eigenes gitops-Repo oder alles in https://github.com/suxess-it/charts ?
+5. Derzeit haben wir alle unsere Plattform-Apps unter https://github.com/suxess-it/charts jeweils in einem Unterverzeichnis. Lt. gängiger Praxis in der Community ist das ok. Andere Varianten wären ein Repo pro App, fühlt sich aber momentan zuviel an.
 
 
 ## Applikationen deaktivieren
