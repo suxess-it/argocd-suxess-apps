@@ -48,9 +48,11 @@ spec:
 
 1. Es wrden keine Helm-Chart-Versionen oder Values direkt in AppDef angeben, die AppDef dienen also nur zum erstmaligen Onboarding der Apps, aber sollen in der laufenden Weiterentwicklung nicht ständig verändert werden müssen. Das hat den Vorteil dass Veränderungen dann nur in den App-Repos selbst stattfindet aber nicht in der Parent-App. D.h. auch 3rd-Party-Helm-Charts werden entweder nach https://github.com/suxess-it/charts geklont oder über ein Umbrella-Chart eingebunden.
 
-4. sx- Prefix bei Appnamen? notwendig oder nicht?
+2. Derzeit haben wir alle unsere Plattform-Apps unter https://github.com/suxess-it/charts jeweils in einem Unterverzeichnis. Lt. gängiger Praxis in der Community ist das ok. Andere Varianten wären ein Repo pro App, fühlt sich aber momentan zuviel an.
 
-5. Derzeit haben wir alle unsere Plattform-Apps unter https://github.com/suxess-it/charts jeweils in einem Unterverzeichnis. Lt. gängiger Praxis in der Community ist das ok. Andere Varianten wären ein Repo pro App, fühlt sich aber momentan zuviel an.
+3. Alle Apps haben einen "sx-"-Prefix
+
+
 
 
 ## Applikationen deaktivieren

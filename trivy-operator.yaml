@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: trivy-operator
+  name: sx-trivy-operator
   namespace: suxess-it-admin
 spec:
   project: default
